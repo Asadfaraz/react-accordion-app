@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { BiMessageAltAdd } from "react-icons/bi";
-import { GoDiffRemoved } from "react-icons/go";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import classes from "./question.module.css";
 
 // BiMessageAltAdd, GoDiffRemoved
 
@@ -13,18 +13,24 @@ const Question = (props) => {
   const dataItem = props.dataItem;
 
   return (
-    <div>
-      <h3>{dataItem.title}</h3>
-      {viewAnswer ? <p>{dataItem.info}</p> : ""}
-      <button
-        type="button"
-        onClick={() => {
-          setViewAnswer(!viewAnswer);
-        }}
-      >
-        {viewAnswer ? <GoDiffRemoved /> : <BiMessageAltAdd />}
-      </button>
-    </div>
+    <article>
+      <div className={classes.question}>
+        <h3>{dataItem.title}</h3>
+
+        {viewAnswer ? <p>{dataItem.info}</p> : ""}
+      </div>
+
+      <div className={classes.btn}>
+        <button
+          type="button"
+          onClick={() => {
+            setViewAnswer(!viewAnswer);
+          }}
+        >
+          {viewAnswer ? <AiOutlineMinus /> : <AiOutlinePlus />}
+        </button>
+      </div>
+    </article>
   );
 };
 
